@@ -54,6 +54,7 @@ Please refer to the table here for the latest ScanNet results.
 ### ScanNet: QA
 | Model | Class | App. | Geo. | Spa. | Exi. | Overall (Case) | Overall (Obj.) |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| [3D-VisTA](https://3d-vista.github.io/) | 28.4 | 35.7 | 41.6 | 48.0 | 55.0 | 43.2 | 7.3 |
 | [PQ3D](https://pq3d.github.io/) | 37.8 | 45.8 | 32.1 | 19.2 | 44.5 | 35.9 | 4.2 |
 | [SceneVerse](https://scene-verse.github.io/) | 26.4 | 40.4 | 40.0 | 35.0 | 54.1 | 40.5 | 4.7 |
 | [LEO](https://embodied-generalist.github.io/) | 16.4 | 39.8 | 47.6 | 52.8 | 54.3 | 45.2 | 7.5 |
@@ -61,6 +62,8 @@ Please refer to the table here for the latest ScanNet results.
 ### ScanNet: Grounding
 | Model | Class | App. | Geo. | Spa. | Overall (Case) | Overall (Obj.) |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| [ViL3DRel](https://cshizhe.github.io/projects/vil3dref.html) | 65.4 | 69.0 | 53.0 | 63.5 | 65.4 | 44.4 |
+| [3D-VisTA](https://3d-vista.github.io/) | 71.9 | 65.6 | 57.5 | 70.9 | 71.9 | 49.1 |
 | [PQ3D](https://pq3d.github.io/) | 74.4 | 75.5 | 62.1 | 76.8 | 74.4 | 60.0 |
 | [SceneVerse](https://scene-verse.github.io/) | 73.4 | 65.3 | 61.6 | 73.0 | 73.4 | 51.4 |
 
