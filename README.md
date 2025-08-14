@@ -58,6 +58,8 @@ Please refer to the table here for the latest ScanNet results.
 | [PQ3D](https://pq3d.github.io/) | 37.8 | 45.8 | 32.1 | 19.2 | 44.5 | 35.9 | 4.2 |
 | [SceneVerse](https://scene-verse.github.io/) | 26.4 | 40.4 | 40.0 | 35.0 | 54.1 | 40.5 | 4.7 |
 | [LEO](https://embodied-generalist.github.io/) | 16.4 | 39.8 | 47.6 | 52.8 | 54.3 | 45.2 | 7.5 |
+| [Chat-Scene](https://github.com/ZzZZCHS/Chat-Scene) | 30.0 | 42.7 | 50.0 | 53.9 | 62.9 | 49.8 | 10.9 |
+| [GPT-4o](https://openai.com/index/gpt-4o-system-card/) | 39.2 | 49.9 | 53.8 | 58.4 | 70.0 | 56.0 | 15.3 |
 
 ### ScanNet: Grounding
 | Model | Class | App. | Geo. | Spa. | Overall (Case) | Overall (Obj.) |
