@@ -11,7 +11,13 @@ def extract_pred(data_dict):
     """
     TODO: fill this function to extract grounding inference results
     """
-    return data_dict['correct']
+    if 'correct' in data_dict:
+        return data_dict['correct']
+    elif 'pred' in data_dict and 'ref_captions' in data_dict:
+        pred = int(data_dict['pred'][4:7])
+        return pred in data_dict['ref_captions']
+    else:
+        raise NotImplementedError()
 
 
 def build_results_mapping(data, infer_results):

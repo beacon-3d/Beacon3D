@@ -68,6 +68,7 @@ Please refer to the table here for the latest ScanNet results.
 | [3D-VisTA](https://3d-vista.github.io/) | 71.9 | 65.6 | 57.5 | 70.9 | 71.9 | 49.1 |
 | [PQ3D](https://pq3d.github.io/) | 74.4 | 75.5 | 62.1 | 76.8 | 74.4 | 60.0 |
 | [SceneVerse](https://scene-verse.github.io/) | 73.4 | 65.3 | 61.6 | 73.0 | 73.4 | 51.4 |
+| [Chat-Scene](https://github.com/ZzZZCHS/Chat-Scene) | 61.6 | 58.9 | 51.1 | 56.9 | 61.6 | 42.3 |
 
 ### 3RScan: QA
 | Model | Class | App. | Geo. | Spa. | Exi. | Overall (Case) | Overall (Obj.) |
