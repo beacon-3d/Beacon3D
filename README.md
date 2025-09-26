@@ -60,6 +60,10 @@ Please refer to the table here for the latest ScanNet results.
 | [LEO](https://embodied-generalist.github.io/) | 16.4 | 39.8 | 47.6 | 52.8 | 54.3 | 45.2 | 7.5 |
 | [Chat-Scene](https://github.com/ZzZZCHS/Chat-Scene) | 30.0 | 42.7 | 50.0 | 53.9 | 62.9 | 49.8 | 10.9 |
 | [GPT-4o](https://openai.com/index/gpt-4o-system-card/) | 39.2 | 49.9 | 53.8 | 58.4 | 70.0 | 56.0 | 15.3 |
+| [LLaVA-3D](https://zcmax.github.io/projects/LLaVA-3D/) | 35.1 | 66.7 | 62.5 | 54.2 | 62.9 | 59.1 | 19.0 |
+| [Video-3D LLM](https://github.com/LaVi-Lab/Video-3D-LLM) | 40.1 | 64.1 | 60.6 | 55.3 | 64.1 | 59.0 | 17.9 |
+| [GPT4Scene](https://gpt4scene.github.io/) | 38.1 | 59.7 | 59.3 | 52.6 | 66.1 | 57.2 | 17.9 |
+| [LEO-VL](https://leo-vl.github.io/) | 41.2 | 67.4 | 57.0 | 61.0 | 56.7 | 59.5 | 19.2 |
 
 ### ScanNet: Grounding
 | Model | Class | App. | Geo. | Spa. | Overall (Case) | Overall (Obj.) |
@@ -78,6 +82,7 @@ Please refer to the table here for the latest ScanNet results.
 | [SceneVerse](https://scene-verse.github.io/) | 28.3 | 32.3 | 34.6 | 38.9 | 44.6 | 37.4 | 0.4 |
 | [LEO](https://embodied-generalist.github.io/) | 23.9 | 36.4 | 53.2 | 49.5 | 45.5 | 44.0 | 1.5 |
 | [GPT-4o](https://openai.com/index/gpt-4o-system-card/) | 34.8 | 38.2 | 40.0 | 45.4 | 60.7 | 46.1 | 11.0 |
+| [LEO-VL](https://leo-vl.github.io/) | 27.2 | 48.4 | 57.5 | 49.8 | 46.0 | 48.2 | 3.3 |
 
 ### 3RScan: Grounding
 | Model | Class | App. | Geo. | Spa. | Overall (Case) | Overall (Obj.) |
@@ -95,6 +100,7 @@ Please refer to the table here for the latest ScanNet results.
 | [SceneVerse](https://scene-verse.github.io/) | 16.2 | 32.1 | 12.5 | 26.5 | 38.1 | 28.9 | 3.1 |
 | [LEO](https://embodied-generalist.github.io/) | 11.3 | 24.3 | 49.0 | 26.7 | 30.9 | 26.2 | 0.6 |
 | [GPT-4o](https://openai.com/index/gpt-4o-system-card/) | 29.0 | 41.6 | 33.3 | 25.7 | 59.3 | 39.4 | 7.6 |
+| [LEO-VL](https://leo-vl.github.io/) | 29.0 | 47.6 | 61.5 | 30.9 | 33.9 | 37.7 | 6.9 |
 
 ### MultiScan: Grounding
 | Model | Class | App. | Geo. | Spa. | Overall (Case) | Overall (Obj.) |
