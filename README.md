@@ -112,50 +112,41 @@ Please refer to the table here for the latest ScanNet results.
 
 ## Get Started
 
-1. Clone Github repo.
+1. Clone Github repo
 ```shell
 git clone git@github.com:beacon-3d/beacon-3d.git
 cd beacon-3d
 ```
-2. Setup environment. This step can be ignored since the code only involves `numpy`, `openai`, and `tqdm`.
-3. Check out [data](#data) and [evaluation](#evaluation).
+2. Setup environment. Make sure your python environment includes `numpy`, `openai`, and `tqdm`
+3. Check out [data](#data) and [evaluation](#evaluation)
 
 ## Data
 The test data is in `data/{domain}`, where `{domain}` includes scannet, 3rscan, and multiscan.
 
 **Metadata.** The metadata records grounding chains and grounding-QA chains for each object.
 
-**Format process.** We provide scripts to convert the metadata into ScanRefer format (for grounding) and ScanQA format (for QA). We also provide the json files after this process (without `metadata` prefix) that are ready to use.
-```shell
-cd data
-
-# take scannet for example
-
-# grounding
-python grounding_to_scanrefer_format.py --domain scannet --src scannet/metadata_scannet_grounding.json --dst scannet/scannet_grounding.json
-
-# QA
-python qa_to_scanqa_format.py --domain scannet --src scannet/metadata_scannet_qa.json --dst scannet/scannet_qa.json
-
-cd ..
-```
+**Format process.** The metadata is converted into ScanRefer format (for grounding) and ScanQA format (for QA). We provide the processed json files that are ready to use.
 
 
 ## Evaluation
-**TODO before running evaluation.** Implement the `extract_pred` function in `evaluate_grounding.py` and `evaluate_qa.py` to process the raw inference results from your model. Remember to setup your OpenAI API key before running `evaluate_qa.py`.
+**TODO before running evaluation:**
+- Check the `extract_pred` function in `evaluate_grounding.py` and `evaluate_qa.py`. Modify it if necessary.
+- Setup your OpenAI API key before running `evaluate_qa.py`
 
-**Run evaluation.** Run `evaluate_grounding.py` and `evaluate_qa.py`. For Grounding-QA chain analysis, you need to add a path of the processed grounding results.
+**Run evaluation:**
 ```shell
-# take scannet for example
-
-# grounding
-python evaluate_grounding.py --infer ${inference_results_path} --output ${processed_results_path} --data data/scannet/scannet_grounding.json --metadata data/scannet/metadata_scannet_grounding.json
+# Grounding
+python evaluate_grounding.py --infer ${inference_results_path} --domain scannet
+python evaluate_grounding.py --infer ${inference_results_path} --domain 3rscan
+python evaluate_grounding.py --infer ${inference_results_path} --domain multiscan
 
 # QA
-python evaluate_qa.py --infer ${inference_results_path} --output ${processed_results_path} --data data/scannet/scannet_qa.json --metadata data/scannet/metadata_scannet_qa.json
+python evaluate_qa.py --infer ${inference_results_path} --domain scannet
+python evaluate_qa.py --infer ${inference_results_path} --domain 3rscan
+python evaluate_qa.py --infer ${inference_results_path} --domain multiscan
 
-# QA (with GQA-Chain analysis)
-python evaluate_qa.py --infer ${inference_results_path} --output ${processed_results_path} --data data/scannet/scannet_qa.json --metadata data/scannet/metadata_scannet_qa.json --grounding ${processed_grounding_results_path}
+# QA (with GQA-Chain analysis, take scannet for example)
+python evaluate_qa.py --infer ${inference_results_path} --domain scannet --grounding ${processed_grounding_results_path}
 ```
 
 

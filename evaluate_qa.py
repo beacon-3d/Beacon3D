@@ -47,6 +47,8 @@ def extract_pred(data_dict):
         return data_dict['pred_response']
     elif 'pred' in data_dict:
         return data_dict['pred']
+    elif 'prediction' in data_dict:
+        return data_dict['prediction']
     else:
         raise NotImplementedError()
 
@@ -230,6 +232,7 @@ def main():
     parser.add_argument('--infer', type=str, help='Path of raw inference results (json)')
     parser.add_argument('--output', type=str, help='Path of processed scores (json)', default=None)
     parser.add_argument('--grounding', type=str, help='Path of processed grounding results (json)', default=None)
+    parser.add_argument('--domain', type=str, help='scannet | 3rscan | multiscan', default=None)
     parser.add_argument('--data', type=str, help='Path of test data (json)', default='data/scannet/scannet_qa.json')
     parser.add_argument('--metadata', type=str, help='Path of metadata (json)', default='data/scannet/metadata_scannet_qa.json')
     parser.add_argument('--model', type=str, help='OpenAI GPT model', default='gpt-4o-2024-08-06')
@@ -250,13 +253,19 @@ def main():
             processed_qa = json.load(f)
     else:
         # build output results
+        if args.domain:
+            domain = args.domain.lower()
+            assert domain in ['scannet', '3rscan', 'multiscan']
+            args.data = f'data/{domain}/{domain}_qa.json'
+            args.metadata = f'data/{domain}/metadata_{domain}_qa.json'
         with open(args.data) as f:
             data = json.load(f)
         with open(args.metadata) as f:
             metadata = json.load(f)
-        if data[0]['scene_id'] != infer_results[0]['scene_id']:
+        infer_scene_key = 'scene_name' if 'scene_name' in infer_results[0] else 'scene_id'
+        if data[0]['scene_id'] != infer_results[0][infer_scene_key]:
             print("Sort scene")
-            data = sorted(data, key=lambda x: x['scene_id'])
+            data = sorted(data, key=lambda x: x[infer_scene_key])
 
         evaluator = LLMEvaluator(model=args.model, region=args.region, prompt_path=args.prompt, verbose=args.verbose)
         logging.getLogger('httpx').setLevel(logging.WARNING)

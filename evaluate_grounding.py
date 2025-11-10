@@ -152,6 +152,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--infer', type=str, help='Path of raw inference results (json)')
     parser.add_argument('--output', type=str, help='Path of processed scores (json)', default=None)
+    parser.add_argument('--domain', type=str, help='scannet | 3rscan | multiscan', default=None)
     parser.add_argument('--data', type=str, help='Path of test data (json)', default='data/scannet/scannet_grounding.json')
     parser.add_argument('--metadata', type=str, help='Path of metadata (json)', default='data/scannet/metadata_scannet_grounding.json')
     args = parser.parse_args()
@@ -163,6 +164,11 @@ def main():
         output_file = os.path.splitext(args.infer)[0] + '_processed.json'
 
     # build output results
+    if args.domain:
+        domain = args.domain.lower()
+        assert domain in ['scannet', '3rscan', 'multiscan']
+        args.data = f'data/{domain}/{domain}_grounding.json'
+        args.metadata = f'data/{domain}/metadata_{domain}_grounding.json'
     with open(args.data) as f:
         data = json.load(f)
     with open(args.metadata) as f:
