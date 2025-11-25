@@ -6,16 +6,15 @@ import os
 import numpy as np
 from tqdm import tqdm
 
-from utils import answer_match, call_openai_api_azure, clean_answer, \
-                  extract_number, is_binary_question \
+from utils import answer_match, call_openai_api, \
+                  clean_answer, extract_number, is_binary_question
 
 KNOWLEDGE_TYPES = ['class', 'appearance', 'geometry', 'spatial', 'existence', 'functionality']
 
 
 class LLMEvaluator():
-    def __init__(self, model, region, prompt_path, verbose=False):
+    def __init__(self, model, prompt_path, verbose=False):
         self.model = model
-        self.region = region
         with open(prompt_path) as f:
             self.messages = json.load(f)
         self.verbose = verbose
@@ -24,7 +23,7 @@ class LLMEvaluator():
         messages = self.messages.copy()
         user_prompt = '\n'.join([f"Question: {question}", f"Answer: {answer}", f"Ground Truth: {gt}"])
         messages.append({'role': 'user', 'content': user_prompt})
-        response = call_openai_api_azure(messages=messages, model=self.model, region=self.region)
+        response = call_openai_api(messages=messages, model=self.model)
         score = extract_number(response)
         if self.verbose:
             print(user_prompt, score)
@@ -235,8 +234,7 @@ def main():
     parser.add_argument('--domain', type=str, help='scannet | 3rscan | multiscan', default=None)
     parser.add_argument('--data', type=str, help='Path of test data (json)', default='data/scannet/scannet_qa.json')
     parser.add_argument('--metadata', type=str, help='Path of metadata (json)', default='data/scannet/metadata_scannet_qa.json')
-    parser.add_argument('--model', type=str, help='OpenAI GPT model', default='gpt-4o-2024-08-06')
-    parser.add_argument('--region', type=str, help='API endpoint region', default='northcentralus')
+    parser.add_argument('--model', type=str, help='OpenAI GPT model', default='gpt-4o-2024-11-20')
     parser.add_argument('--prompt', type=str, help='Path of system prompt', default='data/system_prompt.json')
     parser.add_argument('--verbose', action='store_true')
     args = parser.parse_args()
@@ -267,7 +265,7 @@ def main():
             print("Sort scene")
             data = sorted(data, key=lambda x: x[infer_scene_key])
 
-        evaluator = LLMEvaluator(model=args.model, region=args.region, prompt_path=args.prompt, verbose=args.verbose)
+        evaluator = LLMEvaluator(model=args.model, prompt_path=args.prompt, verbose=args.verbose)
         logging.getLogger('httpx').setLevel(logging.WARNING)
 
         # construct mapping from scene and question to prediction

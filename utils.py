@@ -20,7 +20,7 @@ def is_binary_question(gts):
 def call_openai_api_azure(
     messages: list,
     api_key: str = None,
-    model: str = 'gpt-4o-2024-08-06',
+    model: str = 'gpt-4o-2024-11-20',
     region: str = 'northcentralus',
 ):
     API_BASE = ""   # TODO
@@ -33,13 +33,12 @@ def call_openai_api_azure(
         else:
             raise LookupError("No OpenAI API key found")
 
-    client = openai.AzureOpenAI(
-        api_key=api_key,
-        api_version='2024-02-01',
-        azure_endpoint=ENDPOINT,
-    )
-
     try:
+        client = openai.AzureOpenAI(
+            api_key=api_key,
+            api_version='2024-02-01',
+            azure_endpoint=ENDPOINT,
+        )
         response = client.chat.completions.create(
             model=model,
             messages=messages,
@@ -53,7 +52,7 @@ def call_openai_api_azure(
 def call_openai_api(
     messages: list,
     api_key: str = None,
-    model: str = 'gpt-4o-2024-08-06',
+    model: str = 'gpt-4o-2024-11-20',
 ):
     if api_key is None:
         if 'OPENAI_API_KEY' in os.environ:
